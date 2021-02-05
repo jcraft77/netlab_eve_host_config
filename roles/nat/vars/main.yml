@@ -1,0 +1,17 @@
+---
+nat:
+  - { name: "SW1", snat_ip: 198.18.101.1,    dport: 10101,  sport: 22 }
+  - { name: "R1", snat_ip: 198.18.101.101,  dport: 10201,  sport: 22 }
+  - { name: "R2", snat_ip: 198.18.101.102,  dport: 10202,  sport: 22 }
+  - { name: "R3", snat_ip: 198.18.101.103,  dport: 10203,  sport: 22 }
+  - { name: "R4", snat_ip: 198.18.101.104,  dport: 10204,  sport: 22 }
+  - { name: "R5", snat_ip: 198.18.101.105,  dport: 10205,  sport: 22 }
+  - { name: "R6", snat_ip: 198.18.101.106,  dport: 10206,  sport: 22 }
+  - { name: "R7", snat_ip: 198.18.101.107,  dport: 10207,  sport: 22 }
+  - { name: "R8", snat_ip: 198.18.101.108,  dport: 10208,  sport: 22 }
+  - { name: "R9", snat_ip: 198.18.101.109,  dport: 10209,  sport: 22 }
+  - { name: "R10", snat_ip: 198.18.101.110,  dport: 10210,  sport: 22 }
+  - { name: "R11", snat_ip: 198.18.101.111,  dport: 10211,  sport: 22 }
+  - { name: "R12", snat_ip: 198.18.101.111,  dport: 10212,  sport: 22 }
+  - { name: "R13", snat_ip: 198.18.101.111,  dport: 10213,  sport: 22 }
+  - { name: "R14", snat_ip: 198.18.101.114,  dport: 10214,  sport: 22 }

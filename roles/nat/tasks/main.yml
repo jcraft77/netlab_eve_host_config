@@ -1,0 +1,40 @@
+---
+- name: "BUILD NAT CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables -F FORWARD"
+  register: FLUSH_FORWARD
+
+- name: "BUILD NAT CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables -F -t nat"
+  register: FLUSH_NAT
+
+- name: "BUILD NAT CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables -A PREROUTING -t nat -i pnet0 -p tcp --dport {{ item.dport }} -j DNAT --to {{ item.snat_ip }}:{{ item.sport }}" 
+  with_items:
+    - "{{ nat }}"
+  register: NAT
+
+- name: "BUILD NAT CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables -A FORWARD -p tcp -d {{ item.snat_ip }} --dport 22 -j ACCEPT"
+  with_items:
+    - "{{ nat }}"
+  register: FORWARD
+
+- name: "BUILD NAT CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables -t nat -A POSTROUTING -o pnet0 -s 192.18.101.0/24 -j MASQUERADE"
+  register: MASQUERADE
+
+- name: "SAVE IPTABLES CONFIG"
+  become: yes
+  ansible.builtin.shell:
+    cmd: "iptables-save > /etc/iptables.conf"
+  register: SAVE_CONFIG

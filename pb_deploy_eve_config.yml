@@ -1,0 +1,7 @@
+---
+- name: "INSTALL PACKAGES WITH ROLES"
+  hosts:
+    - eve-ng-01
+  gather_facts: yes
+  roles:
+    - role: "nat"
